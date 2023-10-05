@@ -11,30 +11,41 @@ public class KortUtils {
 	 * 
 	 * @see Kort
 	 * 
-	 * @param samling
-	 * 			samling av kort som skal sorteres. 
+	 * @param samling samling av kort som skal sorteres.
 	 */
-	
+
 	public static void sorter(KortSamling samling) {
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		// TODO - END
+		for (int antall = samling.getAntalKort(); antall > 0; antall--) {
+			Kort minst = samling.getAllekort()[0];
+			for (int i = 1; i < antall; i++) {
+				if (samling.getAllekort()[i].compareTo(minst) < 0) {
+					minst = samling.getAllekort()[i];
+				}
+			}
+			samling.fjern(minst);
+			samling.leggTil(minst);
+
+		}
+
 	}
-	
+
 	/**
-	 * Stokkar en kortsamling. 
+	 * Stokkar en kortsamling.
 	 * 
-	 * @param samling
-	 * 			samling av kort som skal stokkes. 
+	 * @param samling samling av kort som skal stokkes.
 	 */
 	public static void stokk(KortSamling samling) {
-		
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.method());
-		// TODO - END
+		Random rand = new Random();
+		for (int i = 0; i < 20; i++) {
+
+			for (int antall = samling.getAntalKort(); antall > 0; antall--) {
+				int random = rand.nextInt(antall);
+				Kort kort = samling.getAllekort()[random];
+				samling.fjern(kort);
+				samling.leggTil(kort);
+			}
+		}
+
 	}
-	
+
 }
