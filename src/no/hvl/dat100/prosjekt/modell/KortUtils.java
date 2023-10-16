@@ -36,11 +36,14 @@ public class KortUtils {
 	 */
 	public static void stokk(KortSamling samling) {
 		Random rand = new Random();
-		for (int i = 0; i < 20; i++) {
+		int random = 0;
+		for (int i = 0; i < 50; i++) {
 
 			for (int antall = samling.getAntalKort(); antall > 0; antall--) {
-				int random = rand.nextInt(antall);
+				random = rand.nextInt(antall);
+				
 				Kort kort = samling.getAllekort()[random];
+				
 				samling.fjern(kort);
 				samling.leggTil(kort);
 			}

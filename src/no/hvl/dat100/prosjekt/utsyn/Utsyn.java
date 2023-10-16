@@ -115,7 +115,7 @@ public class Utsyn extends JFrame {
 
 		syd.add(sydhand);
 
-		syd.setBackground(Color.WHITE);
+		syd.setBackground(Color.YELLOW);
 		add(kort, BorderLayout.SOUTH);
 	}
 
@@ -150,7 +150,7 @@ public class Utsyn extends JFrame {
 
 		bord.add(autospill);
 
-		bord.setBackground(Color.WHITE);
+		bord.setBackground(Color.ORANGE);
 		add(bord, BorderLayout.CENTER);
 	}
 
@@ -167,7 +167,7 @@ public class Utsyn extends JFrame {
 		nord.add(nordhand);
 		nord.add(nordantal);
 
-		nord.setBackground(Color.WHITE);
+		nord.setBackground(Color.BLUE);
 		add(nord, BorderLayout.NORTH);
 	}
 

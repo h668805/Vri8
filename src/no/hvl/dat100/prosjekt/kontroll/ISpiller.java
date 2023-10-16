@@ -37,17 +37,15 @@ public interface ISpiller {
 	/**
 	 * Legger et kort til spillerens hånd.
 	 * 
-	 * @param kort
-	 *            kortet som legges til.
+	 * @param kort kortet som legges til.
 	 */
 	public void leggTilKort(Kort kort);
 
 	/**
-	 * Fjerner et kort fra spillerens hÂnd. Kortet skal finnes ved hjelp av
-	 * equals() metoden i kort.
+	 * Fjerner et kort fra spillerens hÂnd. Kortet skal finnes ved hjelp av equals()
+	 * metoden i kort.
 	 * 
-	 * @param kort
-	 *            som skal fjernes fra hÂnden.
+	 * @param kort som skal fjernes fra hÂnden.
 	 */
 	public void fjernKort(Kort kort);
 
@@ -59,8 +57,7 @@ public interface ISpiller {
 	/**
 	 * Trekker et kort fra bunken.
 	 * 
-	 * @param kort
-	 *            som trekkes.
+	 * @param kort som trekkes.
 	 */
 	public void trekker(Kort kort);
 
@@ -73,19 +70,17 @@ public interface ISpiller {
 
 	/**
 	 * Kan angi hvor mange ganger spilleren har trukket. Spesielt aktuelt for å
-	 * kunne sette antall trekk til 0 (etter spilleren har spilt et kort eller
-	 * sagt forbi).
+	 * kunne sette antall trekk til 0 (etter spilleren har spilt et kort eller sagt
+	 * forbi).
 	 * 
-	 * @param trekk
-	 *            antal ganger spilleren har trukket.
+	 * @param trekk antal ganger spilleren har trukket.
 	 */
 	public void setAntallTrekk(int trekk);
 
 	/**
 	 * Gir neste handling (spill et kort, trekk et kort, eller forbi).
 	 * 
-	 * @param topp
-	 *            kortet øverst i til-bunken.
+	 * @param topp kortet øverst i til-bunken.
 	 * @return neste handling.
 	 */
 	public Handling nesteHandling(Kort topp);

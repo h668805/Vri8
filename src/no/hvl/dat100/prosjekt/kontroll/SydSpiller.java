@@ -37,11 +37,18 @@ public class SydSpiller extends Spiller {
 	@Override
 	public Handling nesteHandling(Kort topp) {
 
-		// TODO - START
-		/* first-fit strategi */
-	
-		throw new UnsupportedOperationException(TODO.method());
-	
-		// TODO - END
+		for (Kort k: this.getHand().getAllekort()) {
+			if (Regler.kanLeggeNed(k, topp)) {
+				return new Handling (HandlingsType.LEGGNED,k);
+			}
+			
+		}
+		if (this.getAntallTrekk()<Regler.maksTrekk()) {
+			return new Handling(HandlingsType.TREKK,topp);
+
+		}
+		else {
+			return new Handling(HandlingsType.FORBI,topp);
+		}
 	}
 }

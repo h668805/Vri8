@@ -70,7 +70,7 @@ public class KortSamling {
 	 * @param kort er kortet som skal leggast til.
 	 */
 	public void leggTil(Kort kort) {
-		if (antall <= MAKS_KORT && kort != null) {
+		if (antall < MAKS_KORT && kort != null) {
 			samling[antall] = kort;
 			antall++;
 
@@ -84,11 +84,12 @@ public class KortSamling {
 	 */
 	public void leggTilAlle() {
 
-		// TODO - START
 		// Husk: bruk Regler.MAKS_KORT_FARGE for å få antall kort per farge
+		antall = 0;
 		for (Kortfarge farge : Kortfarge.values()) {
 			for (int i = 1; i <= Regler.MAKS_KORT_FARGE; i++) {
 				leggTil(new Kort(farge, i));
+
 			}
 
 		}
@@ -174,12 +175,12 @@ public class KortSamling {
 
 		for (int i = 0; i < antall; i++) {
 			if (kort.lik(samling[i])) {
-				for (i = i; i < antall; i++) {
+				for (; i < antall - 1; i++) {
 					samling[i] = samling[i + 1];
 
 				}
-				samling[antall] = null;
 				antall--;
+				samling[antall] = null;
 				return true;
 			}
 		}
