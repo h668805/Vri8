@@ -36,7 +36,6 @@ public abstract class Spiller implements ISpiller {
 		antalltrekk = 0;
 		hand = new KortSamling();
 		spiller = Spillere.INGEN;
-
 	}
 
 	/**
@@ -45,15 +44,15 @@ public abstract class Spiller implements ISpiller {
 	 * @param spiller hvilken spiller det er.
 	 */
 	public Spiller(Spillere spiller) {
+
 		this.spiller = spiller;
 		antalltrekk = 0;
 		hand = new KortSamling();
-
 	}
 
 	public int getAntallKort() {
-		return hand.getAntalKort();
 
+		return hand.getAntalKort();
 	}
 
 	public KortSamling getHand() {
@@ -69,7 +68,6 @@ public abstract class Spiller implements ISpiller {
 	public Spillere hvem() {
 
 		return spiller;
-
 	}
 
 	public void setAntallTrekk(int t) {
@@ -80,19 +78,16 @@ public abstract class Spiller implements ISpiller {
 	public boolean erFerdig() {
 
 		return hand.erTom();
-
 	}
 
 	public void leggTilKort(Kort kort) {
 
 		hand.leggTil(kort);
-
 	}
 
 	public void fjernKort(Kort kort) {
 
 		hand.fjern(kort);
-
 	}
 
 	public void fjernAlleKort() {
@@ -104,6 +99,5 @@ public abstract class Spiller implements ISpiller {
 
 		hand.leggTil(kort);
 		antalltrekk++;
-
 	}
 }

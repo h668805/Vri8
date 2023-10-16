@@ -25,7 +25,6 @@ public class Bord {
 		bunkeTil = new KortSamling();
 		bunkeFra = new KortSamling();
 		bunkeFra.leggTilAlle();
-
 	}
 
 	/**
@@ -36,7 +35,6 @@ public class Bord {
 	public KortSamling getBunkeTil() {
 
 		return bunkeTil;
-
 	}
 
 	/**
@@ -47,7 +45,6 @@ public class Bord {
 	public KortSamling getBunkeFra() {
 
 		return bunkeFra;
-
 	}
 
 	/**
@@ -56,8 +53,8 @@ public class Bord {
 	 * @return true om til-bunken er tom, false ellers.
 	 */
 	public boolean bunketilTom() {
-		return bunkeTil.erTom();
 
+		return bunkeTil.erTom();
 	}
 
 	/**
@@ -68,7 +65,6 @@ public class Bord {
 	public boolean bunkefraTom() {
 
 		return bunkeFra.erTom();
-
 	}
 
 	/**
@@ -96,8 +92,8 @@ public class Bord {
 	 * billedsiden opp, men det trenger ikke gruppen tenke på).
 	 */
 	public void vendOversteFraBunke() {
-		bunkeTil.leggTil(bunkeFra.taSiste());
 
+		bunkeTil.leggTil(bunkeFra.taSiste());
 	}
 
 	/**
@@ -118,8 +114,8 @@ public class Bord {
 	 * @return peker/referanse til øverste kortet i til-bunken.
 	 */
 	public Kort seOversteBunkeTil() {
-		return bunkeTil.seSiste();
 
+		return bunkeTil.seSiste();
 	}
 
 	/**
@@ -130,12 +126,12 @@ public class Bord {
 	 */
 	public void snuTilBunken() {
 
-		Kort siste = bunkeTil.taSiste();
-	bunkeFra = bunkeTil;
-	KortUtils.stokk(bunkeFra);
-	bunkeTil = new KortSamling();
-	bunkeTil.leggTil(siste);
-	
+		bunkeFra = bunkeTil;
+		bunkeTil = new KortSamling();
+
+		vendOversteFraBunke();
+
+		KortUtils.stokk(bunkeFra);
 	}
 
 	/**
@@ -145,7 +141,7 @@ public class Bord {
 	 * 
 	 */
 	public void leggNedBunkeTil(Kort k) {
-		bunkeTil.leggTil(k);
 
+		bunkeTil.leggTil(k);
 	}
 }

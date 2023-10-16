@@ -15,8 +15,10 @@ public class KortUtils {
 	 */
 
 	public static void sorter(KortSamling samling) {
-		for (int antall = samling.getAntalKort(); antall > 0; antall--) {
+
+		for (int antall = samling.getAntalKort(); 0 < antall; antall--) {
 			Kort minst = samling.getAllekort()[0];
+
 			for (int i = 1; i < antall; i++) {
 				if (samling.getAllekort()[i].compareTo(minst) < 0) {
 					minst = samling.getAllekort()[i];
@@ -24,9 +26,7 @@ public class KortUtils {
 			}
 			samling.fjern(minst);
 			samling.leggTil(minst);
-
 		}
-
 	}
 
 	/**
@@ -35,20 +35,19 @@ public class KortUtils {
 	 * @param samling samling av kort som skal stokkes.
 	 */
 	public static void stokk(KortSamling samling) {
+
 		Random rand = new Random();
 		int random = 0;
-		for (int i = 0; i < 50; i++) {
 
+		for (int i = 0; i < 50; i++) {
 			for (int antall = samling.getAntalKort(); antall > 0; antall--) {
 				random = rand.nextInt(antall);
-				
+
 				Kort kort = samling.getAllekort()[random];
-				
+
 				samling.fjern(kort);
 				samling.leggTil(kort);
 			}
 		}
-
 	}
-
 }

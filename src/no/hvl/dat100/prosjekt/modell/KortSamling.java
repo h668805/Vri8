@@ -13,7 +13,6 @@ import no.hvl.dat100.prosjekt.kontroll.dommer.Regler;
 public class KortSamling {
 
 	private final int MAKS_KORT = 4 * Regler.MAKS_KORT_FARGE;
-
 	private Kort[] samling;
 	private int antall;
 
@@ -23,9 +22,7 @@ public class KortSamling {
 	public KortSamling() {
 
 		samling = new Kort[MAKS_KORT];
-
 		antall = 0;
-
 	}
 
 	/**
@@ -40,7 +37,6 @@ public class KortSamling {
 	public Kort[] getSamling() {
 
 		return samling;
-
 	}
 
 	/**
@@ -60,8 +56,12 @@ public class KortSamling {
 	 */
 	public boolean erTom() {
 
-		return antall == 0;
-
+		for (Kort kort : samling) {
+			if (kort != null) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -70,12 +70,11 @@ public class KortSamling {
 	 * @param kort er kortet som skal leggast til.
 	 */
 	public void leggTil(Kort kort) {
+
 		if (antall < MAKS_KORT && kort != null) {
 			samling[antall] = kort;
 			antall++;
-
 		}
-
 	}
 
 	/**
@@ -83,28 +82,26 @@ public class KortSamling {
 	 * slik at de normalt må stokkes før bruk.
 	 */
 	public void leggTilAlle() {
-
 		// Husk: bruk Regler.MAKS_KORT_FARGE for å få antall kort per farge
 		antall = 0;
+
 		for (Kortfarge farge : Kortfarge.values()) {
 			for (int i = 1; i <= Regler.MAKS_KORT_FARGE; i++) {
 				leggTil(new Kort(farge, i));
-
 			}
-
 		}
-
 	}
 
 	/**
 	 * Fjerner alle korta fra samlinga slik at den blir tom.
 	 */
 	public void fjernAlle() {
+
 		for (int i = 0; i < samling.length; i++) {
 			samling[i] = null;
 		}
-		antall = 0;
 
+		antall = 0;
 	}
 
 	/**
@@ -114,11 +111,12 @@ public class KortSamling {
 	 *         er tom, returneres null.
 	 */
 	public Kort seSiste() {
+
 		if (antall == 0) {
 			return null;
 		}
-		return samling[antall - 1];
 
+		return samling[antall - 1];
 	}
 
 	/**
@@ -127,14 +125,15 @@ public class KortSamling {
 	 * @return siste kortet i samlinga. Dersom samalinga er tom, returneres null.
 	 */
 	public Kort taSiste() {
+
 		if (antall == 0) {
 			return null;
 		}
+
 		antall--;
 		Kort siste = samling[antall];
 		samling[antall] = null;
 		return siste;
-
 	}
 
 	/**
@@ -146,17 +145,16 @@ public class KortSamling {
 	 */
 	public boolean har(Kort kort) {
 
-		boolean finnes = false;
 		if (kort == null || antall == 0) {
 			return false;
 		}
+
 		for (int i = 0; i < antall; i++) {
 			if (kort.lik(samling[i])) {
-				finnes = true;
+				return true;
 			}
-
 		}
-		return finnes;
+		return false;
 	}
 
 	/**
@@ -169,6 +167,7 @@ public class KortSamling {
 	 */
 
 	public boolean fjern(Kort kort) {
+
 		if (kort == null || antall == 0) {
 			return false;
 		}
@@ -177,15 +176,14 @@ public class KortSamling {
 			if (kort.lik(samling[i])) {
 				for (; i < antall - 1; i++) {
 					samling[i] = samling[i + 1];
-
 				}
+
 				antall--;
 				samling[antall] = null;
 				return true;
 			}
 		}
 		return false;
-
 	}
 
 	/**
@@ -195,13 +193,13 @@ public class KortSamling {
 	 *         som i kortsamlinga.
 	 */
 	public Kort[] getAllekort() {
+
 		Kort[] alle = new Kort[antall];
 
 		for (int i = 0; i < antall; i++) {
-			alle[i] = samling[i];
+			alle[i] = this.samling[i];
 		}
+
 		return alle;
-
 	}
-
 }

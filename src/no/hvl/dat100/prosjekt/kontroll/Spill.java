@@ -31,7 +31,6 @@ public class Spill {
 		nord = new NordSpiller(Spillere.NORD);
 		syd = new SydSpiller(Spillere.SYD);
 		bord = new Bord();
-
 	}
 
 	/**
@@ -42,7 +41,6 @@ public class Spill {
 	public Bord getBord() {
 
 		return bord;
-
 	}
 
 	/**
@@ -53,7 +51,6 @@ public class Spill {
 	public ISpiller getSyd() {
 
 		return syd;
-
 	}
 
 	/**
@@ -81,6 +78,7 @@ public class Spill {
 		for (int i = 0; i < ANTALL_KORT_START; i++) {
 			delutKort();
 		}
+
 		bord.vendOversteFraBunke();
 	}
 
@@ -104,13 +102,15 @@ public class Spill {
 	 * @return kortet som trekkes.
 	 */
 	public Kort trekkFraBunke(ISpiller spiller) {
+
 		if (bord.bunkefraTom()) {
 			bord.snuTilBunken();
 		}
+
 		Kort kort = bord.taOversteFraBunke();
 		spiller.trekker(kort);
-		return kort;
 
+		return kort;
 	}
 
 	/**
@@ -121,8 +121,8 @@ public class Spill {
 	 * @return handlingen som skal utføres av kontroll delen.
 	 */
 	public Handling nesteHandling(ISpiller spiller) {
-		return spiller.nesteHandling(bord.seOversteBunkeTil());
 
+		return spiller.nesteHandling(bord.seOversteBunkeTil());
 	}
 
 	/**
@@ -136,14 +136,15 @@ public class Spill {
 	 * @return true dersom spilleren har kortet, false ellers.
 	 */
 	public boolean leggnedKort(ISpiller spiller, Kort kort) {
+
 		if (spiller.getHand().har(kort)) {
 			spiller.fjernKort(kort);
 			bord.leggNedBunkeTil(kort);
 			spiller.setAntallTrekk(0);
+
 			return true;
 		} else
 			return false;
-
 	}
 
 	/**
@@ -153,8 +154,8 @@ public class Spill {
 	 * @param spiller spilleren som er i tur.
 	 */
 	public void forbiSpiller(ISpiller spiller) {
-		spiller.setAntallTrekk(0);
 
+		spiller.setAntallTrekk(0);
 	}
 
 	/**
@@ -168,23 +169,21 @@ public class Spill {
 	 */
 	public Kort utforHandling(ISpiller spiller, Handling handling) {
 
-		Kort kort = null;
 		switch (handling.getType()) {
 		case FORBI:
 			forbiSpiller(spiller);
-			return kort;
+			return null;
 
 		case LEGGNED:
-			kort = handling.getKort();
+			Kort kort = handling.getKort();
 			leggnedKort(spiller, kort);
-			return kort;
+			return null;
 
 		case TREKK:
 			return trekkFraBunke(spiller);
+
 		default:
-			return kort;
+			return null;
 		}
-
 	}
-
 }

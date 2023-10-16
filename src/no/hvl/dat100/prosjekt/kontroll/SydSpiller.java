@@ -17,38 +17,33 @@ public class SydSpiller extends Spiller {
 	/**
 	 * Konstruktør.
 	 * 
-	 * @param spiller
-	 *            posisjon for spilleren (nord eller syd).
+	 * @param spiller posisjon for spilleren (nord eller syd).
 	 */
 	public SydSpiller(Spillere spiller) {
 		super(spiller);
 	}
 
 	/**
-	 * Metode for å implementere strategi. Strategien er å spille det første
-	 * kortet som er lovlig (også en åtter selv om man har andre kort som også
-	 * kan spilles). Dersom man ikke har lovlige kort å spille, trekker man om
-	 * man ikke allerede har trukket maks antall ganger. I så fall sier man
-	 * forbi.
+	 * Metode for å implementere strategi. Strategien er å spille det første kortet
+	 * som er lovlig (også en åtter selv om man har andre kort som også kan
+	 * spilles). Dersom man ikke har lovlige kort å spille, trekker man om man ikke
+	 * allerede har trukket maks antall ganger. I så fall sier man forbi.
 	 * 
-	 * @param topp
-	 *            kort som ligg øverst på til-bunken.
+	 * @param topp kort som ligg øverst på til-bunken.
 	 */
 	@Override
 	public Handling nesteHandling(Kort topp) {
 
-		for (Kort k: this.getHand().getAllekort()) {
+		for (Kort k : this.getHand().getAllekort()) {
 			if (Regler.kanLeggeNed(k, topp)) {
-				return new Handling (HandlingsType.LEGGNED,k);
+				return new Handling(HandlingsType.LEGGNED, k);
 			}
-			
 		}
-		if (this.getAntallTrekk()<Regler.maksTrekk()) {
-			return new Handling(HandlingsType.TREKK,topp);
 
-		}
-		else {
-			return new Handling(HandlingsType.FORBI,topp);
+		if (this.getAntallTrekk() < Regler.maksTrekk()) {
+			return new Handling(HandlingsType.TREKK, topp);
+		} else {
+			return new Handling(HandlingsType.FORBI, topp);
 		}
 	}
 }
